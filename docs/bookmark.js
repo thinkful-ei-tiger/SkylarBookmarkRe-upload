@@ -347,11 +347,11 @@ function renderMain() {
     createPage = startPage();
   }
 
-  $('body').html(createPage);
+  $('main').html(createPage);
 }
 
 function handleNewClick() {
-  $('body').on('click', '#newBookMark', function (e) {
+  $('main').on('click', '#newBookMark', function (e) {
     e.preventDefault();
     store.adding = true;
 
@@ -360,7 +360,7 @@ function handleNewClick() {
 }
 
 function handleCancelClick() {
-  $('body').on('click', '#cancel', function (e) {
+  $('main').on('click', '#cancel', function (e) {
     e.preventDefault();
 
     store.adding = false;
@@ -384,7 +384,7 @@ $.fn.extend({
 });
 
 function submitNewBookmark() {
-  $('body').on('submit', '#new-bookmark-form', function (e) {
+  $('main').on('submit', '#new-bookmark-form', function (e) {
     e.preventDefault();
     //console.log("done")
     const url = $("input[name=url]").val();
@@ -406,7 +406,7 @@ function submitNewBookmark() {
 }
 
 function handleBookmarkClick() {
-  $('body').on('click', '.li-title', function (e) {
+  $('main').on('click', '.li-title', function (e) {
     const id = $(this).parent().attr('id');
     const index = store.findIndex(id);
     //console.log(index)
@@ -434,7 +434,7 @@ function handleClickEdit() {
 }
 
 function handleBookmarkUpdate() {
-  $('body').on('submit', '#update-bookmark-form', function (e) {
+  $('main').on('submit', '#update-bookmark-form', function (e) {
     e.preventDefault();
     const url = $("input[name=url]").val();
 
@@ -489,7 +489,7 @@ function handleClickDelete() {
 }
 
 function handleFilterClick() {
-  $('body').on('change', '#rating', function (e) {
+  $('main').on('change', '#rating', function (e) {
     const selectedVal = $('#rating option:selected').val();
     if (selectedVal === '') {
       store.filter = '0';
