@@ -20,7 +20,8 @@ function topButtons() {
 
 <div class="btnRight"> 
     <form id="filter">
-      <select name="" id="rating">
+    <label for="rating"></label>
+      <select name="ratingFilter" id="rating">
       <option>Filter By</option>
       <option value="1">1 heart</option>
       <option value="2">2 hearts</option>
