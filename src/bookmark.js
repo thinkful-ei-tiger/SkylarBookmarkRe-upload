@@ -117,8 +117,8 @@ function newBookmarkForm() {
         <section class="new-bookmark-section">
           <form id="new-bookmark-form">
           <div class="errorTextHold">
-        <p> URL Invalid. Please include a valid URL. </p>
-    </div>
+          <p> URL Invalid. Please include a valid URL. </p>
+          </div>
             <div class="link-text-container">
               <label for="link-text"></label>
               <input type="text" name="url" id="link-text" placeholder="https://www.google.com" value="" required>
@@ -129,27 +129,7 @@ function newBookmarkForm() {
               <textarea name="desc" id="" cols="30" rows="10" placeholder="Describe Your Bookmark" value="" required></textarea>
               
               <div class="heartRate">
-                <p>Rating: </p>
-                <div class="heart">
-                  <label for="heart-1">1</label>
-                  <input type="radio" name="rating" id="heart-1" value="1">
-                </div>
-                <div class="heart">
-                  <label for="heart-2">2</label>
-                  <input type="radio" name="rating" id="heart-2" value="2">
-                </div>
-                <div class="heart">
-                  <label for="heart-3">3</label>
-                  <input type="radio" name="rating" id="heart-3" value="3">
-                </div>
-                <div class="heart">
-                  <label for="heart-4">4</label>
-                  <input type="radio" name="rating" id="heart-4" value="4">
-                </div>
-                <div class="heart">
-                  <label for="heart-5">5</label>
-                  <input type="radio" name="rating" id="heart-5" value="5" checked>
-                </div>
+              ${heartRate()}
               </div>
             </div>
           </form>
@@ -178,27 +158,7 @@ function newBookmarkForm() {
         <textarea name="desc" id="" cols="30" rows="10" placeholder="Describe Your Bookmark" value="" required></textarea>
         
         <div class="heartRate">
-          <p>Rating: </p>
-          <div class="heart">
-            <label for="heart-1">1</label>
-            <input type="radio" name="rating" id="heart-1" value="1">
-          </div>
-          <div class="heart">
-            <label for="heart-2">2</label>
-            <input type="radio" name="rating" id="heart-2" value="2">
-          </div>
-          <div class="heart">
-            <label for="heart-3">3</label>
-            <input type="radio" name="rating" id="heart-3" value="3">
-          </div>
-          <div class="heart">
-            <label for="heart-4">4</label>
-            <input type="radio" name="rating" id="heart-4" value="4">
-          </div>
-          <div class="heart">
-            <label for="heart-5">5</label>
-            <input type="radio" name="rating" id="heart-5" value="5" checked>
-          </div>
+          ${heartRate()}
         </div>
       </div>
     </form>
@@ -219,6 +179,9 @@ function updateBookmark() {
     return `
         <section class="new-bookmark-section">
           <form id="update-bookmark-form">
+          <div class="errorTextHold">
+          <p> URL Invalid. Please include a valid URL. </p>
+          </div>
             <div class="link-text-container">
               <label for="link-text"></label>
               <input type="text" name="url" id="link-text" value="" required>
@@ -229,27 +192,7 @@ function updateBookmark() {
               <textarea name="desc" id="" cols="30" rows="10" placeholder="Describe Your Bookmark" value="" required></textarea>
               
               <div class="heartRate">
-                <p>Rating: </p>
-                <div class="heart">
-                  <label for="heart-1">1</label>
-                  <input type="radio" name="rating" id="heart-1" value="1">
-                </div>
-                <div class="heart">
-                  <label for="heart-2">2</label>
-                  <input type="radio" name="rating" id="heart-2" value="2">
-                </div>
-                <div class="heart">
-                  <label for="heart-3">3</label>
-                  <input type="radio" name="rating" id="heart-3" value="3">
-                </div>
-                <div class="heart">
-                  <label for="heart-4">4</label>
-                  <input type="radio" name="rating" id="heart-4" value="4">
-                </div>
-                <div class="heart">
-                  <label for="heart-5">5</label>
-                  <input type="radio" name="rating" id="heart-5" value="5" checked>
-                </div>
+              ${heartRate()}
               </div>
             </div>
           </form>
@@ -278,27 +221,7 @@ function updateBookmark() {
             <textarea name="desc" id="" cols="30" rows="10" placeholder="Describe Your Bookmark" value="" required></textarea>
             
             <div class="heartRate">
-              <p>Rating: </p>
-              <div class="heart">
-                <label for="heart-1">1</label>
-                <input type="radio" name="rating" id="heart-1" value="1">
-              </div>
-              <div class="s">
-                <label for="heart-2">2</label>
-                <input type="radio" name="rating" id="heart-2" value="2">
-              </div>
-              <div class="heart">
-                <label for="heart-3">3</label>
-                <input type="radio" name="rating" id="heart-3" value="3">
-              </div>
-              <div class="heart">
-                <label for="heart-4">4</label>
-                <input type="radio" name="rating" id="heart-4" value="4">
-              </div>
-              <div class="heart">
-                <label for="heart-5">5</label>
-                <input type="radio" name="rating" id="heart-5" value="5" checked>
-              </div>
+            ${heartRate()}
             </div>
           </div>
         </form>
@@ -382,6 +305,29 @@ $.fn.extend({
     return JSON.stringify(o);
   }
 });
+
+function heartRate() {
+  return `<p>Rating: </p>
+  <div class="heart">
+    <label for="heart-1">1</label>
+    <input type="radio" name="rating" id="heart-1" value="1">
+  </div>
+  <div class="s">
+    <label for="heart-2">2</label>
+    <input type="radio" name="rating" id="heart-2" value="2">
+  </div>
+  <div class="heart">
+    <label for="heart-3">3</label>
+    <input type="radio" name="rating" id="heart-3" value="3">
+  </div>
+  <div class="heart">
+    <label for="heart-4">4</label>
+    <input type="radio" name="rating" id="heart-4" value="4">
+  </div>
+  <div class="heart">
+    <label for="heart-5">5</label>
+    <input type="radio" name="rating" id="heart-5" value="5" checked>`
+}
 
 function submitNewBookmark() {
   $('main').on('submit', '#new-bookmark-form', function (e) {
