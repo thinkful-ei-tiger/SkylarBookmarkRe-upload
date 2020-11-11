@@ -19,8 +19,8 @@ function topButtons() {
 </div>
 
 <div class="btnRight"> 
+ <label for="rating">Filter By Rating:</label>
     <form id="filter">
-    <label for="rating"></label>
       <select name="ratingFilter" id="rating">
       <option>Filter By</option>
       <option value="1">1 heart</option>
