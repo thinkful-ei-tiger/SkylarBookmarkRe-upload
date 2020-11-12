@@ -19,9 +19,7 @@ A simple bookmark application that allows users to:
 
 5) Remove bookmarks from their bookmark list
 
-6) Update/edit previously created bookmarks
+6) Receive appropriate feedback when a bookmark cannot be added
 
-7) Receive appropriate feedback when a bookmark cannot be added
-
-8) Select from a dropdown menu to list all bookmarks rated at or above the chosen selection
+7) Select from a dropdown menu to list all bookmarks rated at or above the chosen selection
 
