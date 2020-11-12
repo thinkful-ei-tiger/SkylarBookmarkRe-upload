@@ -3,19 +3,13 @@
 
 const bookmarks=[];
 let adding = false;
-let edId = null;
 let error = null;
 let filter = 0;
-let editing= false
 
 function pushNewBookmark(newMark) {
     this.bookmarks.push(newMark);
 } 
 
-function updateBookmark(id, newData) {
-  let obj = findById(id);
-  Object.assign(obj, newData);
-}
 
 function createStoreArray(apiBookmarks) {
   apiBookmarks.forEach(bookmark => {
@@ -43,7 +37,6 @@ function deleteBookmark(id) {
 
 function addToBookmark(bookmarkArray) {
   bookmarkArray.forEach(bookmark => {
-    bookmark.updated = false;
     bookmark.expand= false;
   });
 }
@@ -61,8 +54,6 @@ export default {
     adding,
     filter,
     deleteBookmark,
-    editing,
     error,
-    updateBookmark,
     expandedToggle
 }

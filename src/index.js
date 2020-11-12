@@ -20,7 +20,6 @@ function main() {
       book.handleCancelClick();
       book.submitNewBookmark();
       book.handleBookmarkClick();
-      book.handleBookmarkUpdate();
       book.handleFilterClick();
     })
   ;

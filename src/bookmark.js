@@ -48,9 +48,6 @@ function listAddition(singleBookmark) {
           </div>
           <div class="expanded-info">
             <div class="expanded-buttons">
-              <div class="btnLeft">
-                <button class="edit" id="edit">Edit</button>
-              </div>
               <div class="btnRight">
                 <button id="delete" class="delete">Delete</button>
               </div>
@@ -175,68 +172,7 @@ function newBookmarkForm() {
     `;
 }
 
-function updateBookmark() {
-  if (store.error === 'url') {
-    return `
-        <section class="new-bookmark-section">
-          <form id="update-bookmark-form">
-          <div class="errorTextHold">
-          <p> URL Invalid. Please include a valid URL. </p>
-          </div>
-            <div class="link-text-container">
-              <label for="link-text"></label>
-              <input type="text" name="url" id="link-text" value="" required>
-            </div>
-            <div class="description-container">
-              <input type="text" name="title" id="link-title" placeholder="Link Title" required>
 
-              <textarea name="desc" id="" cols="30" rows="10" placeholder="Describe Your Bookmark" value="" required></textarea>
-              
-              <div class="heartRate">
-              ${heartRate()}
-              </div>
-            </div>
-          </form>
-          <div class="form-buttons">
-            <div class="btnLeft">
-              <button id="cancel">Cancel</button>
-            </div>
-            <div class="btnRight">
-              <button type="submit" id="update" form="update-bookmark-form">Update</button>
-            </div>
-          </div>
-        </section>
-      `;
-  }
-
-  return `
-      <section class="new-bookmark-section">
-        <form id="update-bookmark-form">
-          <div class="link-text-container">
-            <label for="link-text">Update your bookmark</label>
-            <input type="text" name="url" id="link-text" placeholder="https://www.google.com" value="" required>
-          </div>
-          <div class="description-container">
-            <input type="text" name="title" id="link-title" placeholder="Link Title" required>
-
-            <textarea name="desc" id="" cols="30" rows="10" placeholder="Describe Your Bookmark" value="" required></textarea>
-            
-            <div class="heartRate">
-            ${heartRate()}
-            </div>
-          </div>
-        </form>
-        <div class="form-buttons">
-          <div class="btnLeft">
-            <button id="cancel">Cancel</button>
-          </div>
-          <div class="btnRight">
-            <button type="submit" id="update" form="update-bookmark-form">Update</button>
-          </div>
-        </div>
-      </section>
-    `;
-}
 
 function startPage() {
   const title = topOfPage();
@@ -253,19 +189,11 @@ function formPage() {
   return title + form;
 }
 
-function editPage() {
-  const title = topOfPage();
-  const form = updateBookmark();
-
-  return title + form;
-}
 
 function renderMain() {
   let createPage = null;
 
-  if (store.editing) {
-    createPage = editPage();
-  } else if (store.adding) {
+  if (store.adding) {
     createPage = formPage();
   } else {
     createPage = startPage();
@@ -288,11 +216,8 @@ function handleCancelClick() {
     e.preventDefault();
 
     store.adding = false;
-    store.editing = false;
-    store.edId = null;
 
     renderMain();
-    handleClickEdit();
     handleClickDelete();
   });
 }
@@ -361,60 +286,11 @@ function handleBookmarkClick() {
     // use id to update api and then re-render
     store.expandedToggle(index);
     renderMain();
-    handleClickEdit();
     handleClickDelete();
   });
 }
 
-function handleClickEdit() {
-  $('li').on('click', '.edit', function (e) {
-    const id = $(this).parent().parent().parent().parent().attr('id');
-    const index = store.findIndex(id);
 
-    store.editing = true;
-    store.edId = id;
-
-    renderMain();
-    handleClickEdit();
-    handleClickDelete();
-  });
-}
-
-function handleBookmarkUpdate() {
-  $('main').on('submit', '#update-bookmark-form', function (e) {
-    e.preventDefault();
-    const url = $("input[name=url]").val();
-
-    if (/^(http)s?:\/\/(.)*/g.test(url) === false) {
-      store.error = 'url';
-      renderMain();
-    } else {
-      const title = $("input[name=title]").val();
-      const rating = $("input[name=rating]:checked").val();
-      const desc = $("textarea[name=desc]").val();
-
-      const newObj = JSON.stringify({
-        url: url,
-        title: title,
-        rating: rating,
-        desc: desc,
-      });
-
-      api.update(store.edId, newObj)
-        .then(() => {
-          const parsedObj = JSON.parse(newObj);
-          store.updateBookmark(store.edId, parsedObj);
-          store.editing = false;
-          store.edID = null;
-          store.error = null;
-          renderMain();
-          handleClickEdit();
-          handleClickDelete();
-        });
-    }
-
-  });
-}
 
 function handleClickDelete() {
   $('li').on('click', '.delete', function () {
@@ -423,14 +299,12 @@ function handleClickDelete() {
       .then(() => {
         store.deleteBookmark(id);
         renderMain();
-        handleClickEdit();
         handleClickDelete();
       });
 
 
 
     renderMain();
-    handleClickEdit();
     handleClickDelete();
   });
 }
@@ -454,8 +328,6 @@ export default {
   handleCancelClick,
   submitNewBookmark,
   handleBookmarkClick,
-  handleClickEdit,
-  handleBookmarkUpdate,
   handleClickDelete,
   handleFilterClick,
 };

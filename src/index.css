@@ -57,7 +57,7 @@ form {
 
 .btnRight {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 #newBookMark {
@@ -178,7 +178,7 @@ li {
   width: 60%;
 }
 
-#edit, #delete {
+#delete {
   padding: 5px;
   width: 80%;
 }

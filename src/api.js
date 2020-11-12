@@ -12,29 +12,6 @@ function getList() {
 }
 
 
-function update(id, changeBookmark) {
- console.log(id)
-  return fetch(baseURL + `/${id}`, {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: changeBookmark,
-  })
-    .then(response => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw Error(response.statusText);
-      }
-    })
-    .catch(error => {
-      console.log(error.message);
-    })
-    ;
-}
-
-
 function create(newBookmark) {
   return fetch(baseURL, {
     method: 'POST',
@@ -76,7 +53,6 @@ function remove(id) {
 export default {
   baseURL,
   getList,
-  update,
   create,
   remove
 }
