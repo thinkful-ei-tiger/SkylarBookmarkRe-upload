@@ -123,7 +123,7 @@ function newBookmarkForm() {
               <input type="text" name="url" id="link-text" placeholder="https://www.google.com" value="" required>
             </div>
             <div class="description-container">
-            <label for="link-title"></label>
+            <label for="link-title">Bookmark Title</label>
               <input type="text" name="title" id="link-title" placeholder="Link Title" required>
 
               <textarea name="desc" id="" cols="30" rows="10" placeholder="Describe Your Bookmark" value="" required></textarea>
