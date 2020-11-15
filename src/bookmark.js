@@ -125,7 +125,7 @@ function newBookmarkForm() {
             <div class="description-container">
             <label for="link-title">Bookmark Title</label>
               <input type="text" name="title" id="link-title" placeholder="Link Title" required>
-              <label for="descipCon">Describe your Bookmark</label>
+              <label for="descripCon">Describe your Bookmark</label>
               <textarea name="desc" id="descripCon" cols="30" rows="10" placeholder="Describe Your Bookmark" value="" required></textarea>
               
               <div class="heartRate">
@@ -156,7 +156,7 @@ function newBookmarkForm() {
       <label for="link-title">Bookmark Title</label>
         <input type="text" name="title" id="link-title" placeholder="Link Title" required>
 
-        <label for="descipCon">Describe your Bookmark</label>
+        <label for="descripCon">Describe your Bookmark</label>
         <textarea name="desc" id="descripCon" cols="30" rows="10" placeholder="Describe Your Bookmark" value="" required></textarea>
         
         <div class="heartRate">
