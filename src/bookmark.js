@@ -234,6 +234,7 @@ $.fn.extend({
 
 function heartRate() {
   return `<p>Rating: </p>
+  <fieldset name="ratingFilter"
   <div class="heart">
     <label for="heart-1">1</label>
     <input type="radio" name="rating" id="heart-1" value="1">
@@ -252,7 +253,8 @@ function heartRate() {
   </div>
   <div class="heart">
     <label for="heart-5">5</label>
-    <input type="radio" name="rating" id="heart-5" value="5" checked>`
+    <input type="radio" name="rating" id="heart-5" value="5" checked>
+    </fieldset>`
 }
 
 function submitNewBookmark() {
