@@ -149,7 +149,7 @@ function newBookmarkForm() {
     <section class="new-bookmark-section">
     <form id="new-bookmark-form">
       <div class="link-text-container">
-        <label for="link-text"></label>
+        <label for="link-text">Bookmark Link</label>
         <input type="text" name="url" id="link-text" placeholder="https://www.google.com" value="" required>
       </div>
       <div class="description-container">
@@ -235,8 +235,9 @@ $.fn.extend({
 });
 
 function heartRate() {
-  return `<p>Rating: </p>
-  <fieldset name="ratingFilter"
+  return `
+  <fieldset name="ratingFilter">
+  <p>Rating: </p>
   <div class="heart">
     <label for="heart-1">1</label>
     <input type="radio" name="rating" id="heart-1" value="1">
