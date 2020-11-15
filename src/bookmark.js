@@ -239,6 +239,7 @@ $.fn.extend({
 function heartRate() {
   return `
   <fieldset name="ratingFilter">
+  <legend>Rate Your Bookmark</legend>
   <p>Rating: </p>
   <div class="heart">
     <label for="heart-1">1</label>
